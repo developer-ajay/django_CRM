@@ -18,11 +18,10 @@ def home(request):
         else:
             messages.error(request, "There Was An Error Logging In, Please Try Again...")
             return redirect('home')
-    
-    return render(request, 'home.html', {})
-
-def login_user(request):
-    pass
+    else:
+        return render(request, 'home.html', {})
 
 def logout_user(request):
-    pass
+    logout(request)
+    messages.success(request, "You Have Been Logged Out...")
+    return redirect('home')
